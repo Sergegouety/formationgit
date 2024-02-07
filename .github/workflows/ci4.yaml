@@ -36,7 +36,7 @@ jobs:
         channel-id: ${{ vars.CHANNEL_ID }}
         # For posting a simple plain text message
         #Envoie le messsage sur le canal slack le message devra contenir le status du job, Le numero du build, le runner surlequel ceci a été executé, le nom du workflow, le github repository
-        slack-message: "GitHub build result: ${{ job.status }}\n Numero du build :${{ GITHUB_JOB }} \n Auteur :${{ GITHUB_ACTOR }}"
+        slack-message: "GitHub build result: ${{ job.status }}\n Numero du build :$GITHUB_JOB \n Auteur :$GITHUB_ACTOR"
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
