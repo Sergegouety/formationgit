@@ -11,22 +11,22 @@ jobs:
     - name: clone repo
       uses: actions/checkout@v3
 
-      name: Setup PHP with PECL extension
+    - name: Setup PHP with PECL extension
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
         extensions: imagick, swoole
 
-      name: keygenerate
+    - name: keygenerate
       run: |
           cp .env.example .env
           php artisan key:generate 
 
-      name: testexec
+    - name: testexec
       run: |
           php artisan test
 
-      name: Post to a Slack channel
+    - name: Post to a Slack channel
       id: slack
       uses: slackapi/slack-github-action@v1.25.0
       with:
