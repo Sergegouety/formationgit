@@ -26,6 +26,7 @@ jobs:
     - name: keygenerate
       run: |
           composer install --prefer-dist
+          composer update
           cp .env.example .env
           php artisan key:generate 
 
@@ -42,6 +43,7 @@ jobs:
         # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
         channel-id: ${{ vars.CHANNEL_ID }}
         # For posting a simple plain text message
+      if: ${{ always() }}
         #Envoie le messsage sur le canal slack le message devra contenir le status du job, Le numero du build, le runner surlequel ceci a été executé, le nom du workflow, le github repository
         slack-message: "GitHub build result: ${{ job.status }}\n Numero du build :${{github.job}} \n Auteur :${{github.actor}}"
       env:
