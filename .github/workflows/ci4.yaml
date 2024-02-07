@@ -36,6 +36,7 @@ jobs:
 
     - name: Post to a Slack channel
       id: slack
+      if: ${{ always() }}
       uses: slackapi/slack-github-action@v1.25.0
       with:
         # Slack channel id, channel name, or user id to post message.
@@ -43,7 +44,6 @@ jobs:
         # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
         channel-id: ${{ vars.CHANNEL_ID }}
         # For posting a simple plain text message
-      if: ${{ always() }}
         #Envoie le messsage sur le canal slack le message devra contenir le status du job, Le numero du build, le runner surlequel ceci a été executé, le nom du workflow, le github repository
         slack-message: "GitHub build result: ${{ job.status }}\n Numero du build :${{github.job}} \n Auteur :${{github.actor}}"
       env:
