@@ -46,7 +46,6 @@ jobs:
         if: ${{ needs.echostartnonregression.outputs.testNonRegression == 'OK' }}
         run: |
           echo "$SONAR_DEV_URL"
-          echo "${{ RUNNER_OS }}"
           sleep 1m
           echo "end Sonar Scanning"
       - name: send message to slack
