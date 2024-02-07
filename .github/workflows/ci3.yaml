@@ -19,6 +19,7 @@ jobs:
          sleep 1s
          echo "end build..."
          echo "status=done" >> "$GITHUB_OUTPUT"
+  
   echostartnonregression:
     name: echostartnonregression job
     needs: echostarbuil
@@ -33,6 +34,7 @@ jobs:
          sleep 1s
          echo "end test non regression..."
          echo "testNonRegression=OK" >> "$GITHUB_OUTPUT"
+  
    echohostsonar:
     name: echohostsonar job
     needs: echostartnonregression
