@@ -6,8 +6,10 @@ on:
   pull_request:
     branch:
       - 'master'
+
 env:
   SONAR_DEV_URL: sonar-dev.agenceemploijeunes.ci
+
 jobs: 
   echostarbuil:
     name: echostarbuil job
@@ -28,14 +30,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-    - name: Print Start non regression
-      id: testNonRegression
-      if: ${{ needs.echostarbuil.outputs.status == 'done' }}
-      run: |
-         echo "start test non regression..."
-         sleep 1s
-         echo "end test non regression..."
-         echo "testNonRegression=OK" >> "$GITHUB_OUTPUT"
+      - name: Print Start non regression
+        id: testNonRegression
+        if: ${{ needs.echostarbuil.outputs.status == 'done' }}
+        run: |
+           echo "start test non regression..."
+           sleep 1s
+           echo "end test non regression..."
+           echo "testNonRegression=OK" >> "$GITHUB_OUTPUT"
   
    echohostsonar:
     name: echohostsonar job
@@ -43,14 +45,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:
-    - name: Print Host sonar
-      if: ${{ needs.echostartnonregression.outputs.testNonRegression == 'OK' }}
-      run: |
-        echo "$SONAR_DEV_URL"
-        echo "${{ RUNNER_OS }}"
-        sleep 1m
-        echo "end Sonar Scanning"
-    - name: send message to slack
-      if: ${{ cancel() }}
-      run: |
-        echo "Github a annulé mon job"
+      - name: Print Host sonar
+        if: ${{ needs.echostartnonregression.outputs.testNonRegression == 'OK' }}
+        run: |
+          echo "$SONAR_DEV_URL"
+          echo "${{ RUNNER_OS }}"
+          sleep 1m
+          echo "end Sonar Scanning"
+      - name: send message to slack
+        if: ${{ cancelled() }}
+        run: |
+          echo "Github a annulé mon job"
