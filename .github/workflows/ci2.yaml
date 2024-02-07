@@ -1,0 +1,22 @@
+
+
+name: ci
+on: 
+  push:
+    branches:
+    - 'master/**'
+jobs: 
+  echocmd:
+    name: echocmd job
+    runs-on: ubuntu-latest
+    steps:
+     - name: Print create project
+       run: |
+         echo "composer create-project laravel/laravel example-app"
+  echoartisan:
+    name: echoartisan job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print artisan serve
+      run: |
+        echo "php artisan serve"
