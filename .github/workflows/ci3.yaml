@@ -20,6 +20,8 @@ jobs:
          sleep 1s
          echo "end build..."
          echo "status=done" >> "$GITHUB_OUTPUT"
+    outputs:
+      status: ${{ steps.status.outputs.status }}
   
   echostartnonregression:
     name: echostartnonregression job
@@ -35,6 +37,8 @@ jobs:
            sleep 1s
            echo "end test non regression..."
            echo "testNonRegression=OK" >> "$GITHUB_OUTPUT"
+    outputs:
+      testNonRegression: ${{ steps.testNonRegression.outputs.testNonRegression }}
   
   echohostsonar:
     name: echohostsonar job
@@ -46,7 +50,7 @@ jobs:
         if: ${{ needs.echostartnonregression.outputs.testNonRegression == 'OK' }}
         run: |
           echo "$SONAR_DEV_URL"
-          sleep 1m
+          sleep 2m
           echo "end Sonar Scanning"
       - name: send message to slack
         if: ${{ cancelled() }}
