@@ -3,7 +3,9 @@
 name: CI
 on: 
   workflow_dispatch:
-  pull_request
+  pull_request:
+    branch:
+      - 'master'
 env:
   SONAR_DEV_URL: sonar-dev.agenceemploijeunes.ci
 jobs: 
