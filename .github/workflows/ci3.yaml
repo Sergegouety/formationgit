@@ -1,15 +1,12 @@
 
-
 name: CI
 on: 
   workflow_dispatch:
   pull_request:
     branches:
       - 'master'
-
 env:
   SONAR_DEV_URL: sonar-dev.agenceemploijeunes.ci
-
 jobs: 
   echostarbuil:
     name: echostarbuil job
@@ -39,7 +36,7 @@ jobs:
            echo "end test non regression..."
            echo "testNonRegression=OK" >> "$GITHUB_OUTPUT"
   
-   echohostsonar:
+  echohostsonar:
     name: echohostsonar job
     needs: echostartnonregression
     runs-on: ubuntu-latest
