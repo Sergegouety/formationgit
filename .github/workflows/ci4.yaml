@@ -1,57 +1,12 @@
+name: Caller Workflow Example
 
-name: action pour cloner un repo
 on: 
   push:
     branches:
     - 'ci/**'
-jobs: 
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 1
-      fail-fast: false
-      matrix:
-        php: [8.2,8.1, 8.0]
-        
-    steps:
-    - name: clone repo
-      uses: actions/checkout@v3
 
-    - name: Setup PHP with PECL extension
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php }}
-        extensions: imagick, swoole
+jobs:
+  call-reusable-workflow:
+    uses: Sergegouety/cicommon/.github/workflows/reuse.yaml
 
-    - name: keygenerate
-      run: |
-          composer install --prefer-dist
-          composer update
-          cp .env.example .env
-          php artisan key:generate 
-
-    - name: testexec
-      run: |
-          php artisan test
-
-    - name: Post to a Slack channel
-      id: slack
-      if: ${{ always() }}
-      uses: slackapi/slack-github-action@v1.25.0
-      with:
-        # Slack channel id, channel name, or user id to post message.
-        # See also: https://api.slack.com/methods/chat.postMessage#channels
-        # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
-        channel-id: ${{ vars.CHANNEL_ID }}
-        # For posting a simple plain text message
-        #Envoie le messsage sur le canal slack le message devra contenir le status du job, Le numero du build, le runner surlequel ceci a été executé, le nom du workflow, le github repository
-        slack-message: "GitHub build result: ${{ job.status }}\n Numero du build :${{github.job}} \n Auteur :${{github.actor}}"
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-
-
-      
-
-
-
- 
+     
