@@ -8,7 +8,7 @@ on:
 jobs:
   call-reusable-workflow:
     permissions:
-      content: read
+      contents: read
     uses: Sergegouety/cicommon/.github/workflows/reuse.yaml@main
     with:
       channel_id: ${{ vars.CHANNEL_ID }}
