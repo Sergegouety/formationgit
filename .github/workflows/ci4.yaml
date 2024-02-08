@@ -14,7 +14,6 @@ jobs:
       channel_id: ${{ vars.CHANNEL_ID }}
     secrets:
       slack_token: ${{ secrets.SLACK_BOT_TOKEN }}
-      
 
 
      
