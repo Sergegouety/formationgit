@@ -8,5 +8,8 @@ on:
 jobs:
   call-reusable-workflow:
     uses: Sergegouety/cicommon/.github/workflows/reuse.yaml
+    with:
+      channel_id: ${{ vars.CHANNEL_ID }}
+      slack_token: ${{ inputs.slack_token }}
 
      
