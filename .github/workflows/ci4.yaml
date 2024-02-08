@@ -7,12 +7,13 @@ on:
 
 jobs:
   call-reusable-workflow:
+    permissions:
+      content: read
     uses: Sergegouety/cicommon/.github/workflows/reuse.yaml@main
     with:
       channel_id: ${{ vars.CHANNEL_ID }}
-      type: string
     secrets:
       slack_token: ${{ secrets.SLACK_BOT_TOKEN }}
-      type: string
+
 
      
