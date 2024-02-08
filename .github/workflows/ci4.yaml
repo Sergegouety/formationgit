@@ -12,10 +12,9 @@ jobs:
     uses: Sergegouety/cicommon/.github/workflows/reuse.yaml@main
     with:
       channel_id: ${{ vars.CHANNEL_ID }}
-      php_version: [9.2,9.1, 9.0]
     secrets:
       slack_token: ${{ secrets.SLACK_BOT_TOKEN }}
-
+      
 
 
      
