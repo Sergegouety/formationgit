@@ -17,7 +17,5 @@ jobs:
       slack_token: ${{ secrets.SLACK_BOT_TOKEN }}
       sonar_token: ${{ secrets.SONAR_TOKEN }}
       sonar_host_url: ${{ secrets.SONAR_HOST_URL }}
-      dependency_track_api_key: ${{ secrets.DEPENDENCY_TRACK_API_KEY }} 
-
-      
+      dependency_track_api_key: ${{ secrets.DEPENDENCY_TRACK_API_KEY }}
       
