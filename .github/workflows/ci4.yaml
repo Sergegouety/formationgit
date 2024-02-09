@@ -14,6 +14,8 @@ jobs:
       channel_id: ${{ vars.CHANNEL_ID }}
     secrets:
       slack_token: ${{ secrets.SLACK_BOT_TOKEN }}
+      sonar_token: ${{ secrets.SONAR_TOKEN }}
+      sonar_host_url: ${{ secrets.SONAR_HOST_URL }}
       
 
 
