@@ -21,9 +21,4 @@ jobs:
       dependency_track_api_key: ${{ secrets.DEPENDENCY_TRACK_API_KEY }}
       host: ${{ secrets.HOST_CD }}
       username: ${{ secrets.USERNAME_CD }}
-      key: ${{ secrets.CD_PRATIQUE_KEY }}
-
-
-
-      
-      
+      key: ${{ secrets.CD_PRATIQUE_KEY }}   
