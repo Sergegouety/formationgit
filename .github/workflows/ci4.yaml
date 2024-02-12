@@ -18,3 +18,7 @@ jobs:
       sonar_token: ${{ secrets.SONAR_TOKEN }}
       sonar_host_url: ${{ secrets.SONAR_HOST_URL }}
       dependency_track_api_key: ${{ secrets.DEPENDENCY_TRACK_API_KEY }}
+      host: ${{ secrets.HOST_CD }}
+      username: ${{ secrets.USERNAME_CD }}
+      port: 22
+      key: ${{ secrets.CD_PRATIQUE_KEY }}
