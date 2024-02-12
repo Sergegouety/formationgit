@@ -23,3 +23,4 @@ jobs:
       username: ${{ secrets.USERNAME_CD }}
       key: ${{ secrets.CD_PRATIQUE_KEY }}
       
+      
